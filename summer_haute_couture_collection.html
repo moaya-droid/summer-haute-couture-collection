@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SUMMER HAUTE COUTURE COLLECTION</title>
+  <style>
+    :root {
+      --ivory: #fffaf0;
+      --cream: #f7efe2;
+      --peach: #ffe3d6;
+      --sand: #e8d5b7;
+      --gold: #c9a35a;
+      --rose: #f8cfd4;
+      --ink: #332c27;
+      --muted: #756b61;
+      --line: rgba(201, 163, 90, .28);
+      --shadow: 0 18px 42px rgba(122, 93, 58, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(255, 227, 214, .6), transparent 36%),
+        linear-gradient(315deg, rgba(248, 207, 212, .38), transparent 34%),
+        var(--ivory);
+      font-family: "Pretendard", "Noto Sans KR", "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1440px, calc(100% - 36px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 250, 240, .88);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      display: grid;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .nav, .filters {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .pill, .copy-btn {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .82);
+      color: var(--ink);
+      padding: 10px 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .pill:hover, .copy-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(122, 93, 58, .12);
+      background: #fff;
+    }
+
+    .pill.active {
+      background: linear-gradient(135deg, #fff6dd, #ffe5dd);
+      border-color: rgba(201, 163, 90, .55);
+      box-shadow: 0 8px 22px rgba(201, 163, 90, .14);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .88);
+      padding: 0 18px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 38px;
+      align-items: center;
+      padding: 48px 0 34px;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 12px 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 7vw, 92px);
+      line-height: .95;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 2.3vw, 28px);
+      font-weight: 700;
+      color: #4b4037;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .badge {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .7);
+      padding: 8px 12px;
+      color: #5e5147;
+      font-size: 13px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .ref-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .ref-panel img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      object-position: 50% 28%;
+    }
+
+    .ref-caption {
+      padding: 16px;
+      background: linear-gradient(135deg, #fff, #fff6ea);
+      font-weight: 800;
+      color: #5a4939;
+    }
+
+    .section {
+      scroll-margin-top: 132px;
+      padding: 26px 0 12px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 3vw, 44px);
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+      box-shadow: 0 14px 34px rgba(122, 93, 58, .10);
+      overflow: hidden;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 430px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 24%;
+      filter: saturate(.96) brightness(1.03);
+      transform: scale(1.02);
+    }
+
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.02), rgba(255,250,240,.72)),
+        var(--accent, rgba(255, 227, 214, .2));
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .look-plate {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(255, 255, 255, .74);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(70, 48, 29, .12);
+    }
+
+    .swatches { display: flex; gap: 8px; margin-top: 10px; }
+    .swatch {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(80, 60, 42, .18);
+    }
+
+    .card-body { padding: 18px; }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 30px;
+      border-radius: 999px;
+      background: #fff4dc;
+      color: #8d682a;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .ko-name {
+      margin: 4px 0 12px;
+      color: #6e5f54;
+      font-weight: 700;
+    }
+
+    .concept {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .prompt-box {
+      border: 1px solid rgba(201, 163, 90, .22);
+      border-radius: 8px;
+      background: #fbf7ef;
+      padding: 12px;
+      margin: 13px 0;
+    }
+
+    .prompt-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .prompt-title {
+      color: #8c6627;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+
+    .copy-btn {
+      min-height: 38px;
+      padding: 8px 12px;
+      font-size: 13px;
+      background: #fff;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      color: #463d36;
+      font-family: "Segoe UI", "Pretendard", sans-serif;
+      font-size: 13px;
+      line-height: 1.55;
+      user-select: text;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .meta div {
+      border-top: 1px solid rgba(201, 163, 90, .22);
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .meta b {
+      display: block;
+      color: #4c4038;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 2px;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid rgba(201, 163, 90, .24);
+      background: #fffaf3;
+      color: #6f5d50;
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .74);
+      padding: 42px 16px;
+      margin: 28px 0;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 44px;
+      padding: 34px 0 46px;
+      background: rgba(255, 255, 255, .55);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .72);
+      padding: 18px;
+    }
+
+    .note h3 { margin-bottom: 10px; }
+    .note ul { margin: 0; padding-left: 20px; color: var(--muted); }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { grid-template-columns: 1fr; }
+      .ref-panel { max-width: 520px; }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 24px, 1440px); }
+      .grid, .footer-grid, .meta { grid-template-columns: 1fr; }
+      .section-head { align-items: start; flex-direction: column; }
+      .section-head p { text-align: left; }
+      .visual { min-height: 390px; }
+      .prompt-head { align-items: start; flex-direction: column; }
+      .copy-btn { width: 100%; }
+      h1 { font-size: clamp(36px, 14vw, 58px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <nav class="nav" aria-label="컬렉션 이동">
+        <a class="pill" href="#resort">01~10 리조트</a>
+        <a class="pill" href="#romantic">11~20 로맨틱</a>
+        <a class="pill" href="#urban">21~30 어반</a>
+        <a class="pill" href="#ocean">31~40 오션</a>
+        <a class="pill" href="#futuristic">41~50 퓨처리스틱</a>
+        <a class="pill" href="#signature">51~60 시그니처</a>
+      </nav>
+      <div class="search-row">
+        <input id="search" class="search" type="search" placeholder="번호, 영문 이름, 한글 이름, 스타일 키워드 검색" />
+        <div class="filters" aria-label="컬렉션 필터">
+          <button class="pill active" data-filter="All">All</button>
+          <button class="pill" data-filter="Resort">Resort</button>
+          <button class="pill" data-filter="Romantic">Romantic</button>
+          <button class="pill" data-filter="Urban">Urban</button>
+          <button class="pill" data-filter="Ocean">Ocean</button>
+          <button class="pill" data-filter="Futuristic">Futuristic</button>
+          <button class="pill" data-filter="Signature">Signature</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="kicker">High-End Fashion Collection</div>
+        <h1>SUMMER HAUTE COUTURE COLLECTION</h1>
+        <p class="subtitle">동일한 여성 모델을 위한<br />60가지 프리미엄 여름 의상 디자인 컬렉션</p>
+        <p class="intro">
+          업로드된 여성 레퍼런스의 청순하고 세련된 얼굴형, 눈매, 피부톤, 긴 갈색 머리와 전체 인상을 유지하면서
+          럭셔리 리조트부터 시그니처 디자이너 컬렉션까지 확장한 60종 여름 패션 룩북입니다.
+          각 카드는 이미지 생성기에 바로 사용할 수 있는 영문·한글 프롬프트와 복사 기능을 포함합니다.
+        </p>
+        <div class="badges">
+          <span class="badge">Reference Model</span>
+          <span class="badge">60 Unique Summer Designs</span>
+          <span class="badge">Medium Full Shot</span>
+          <span class="badge">9:16 Vertical Editorial</span>
+          <span class="badge">English and Korean Prompts</span>
+        </div>
+        <div class="hero-actions">
+          <button class="pill" id="downloadHtml">HTML 다운로드</button>
+          <button class="pill" id="downloadPdf">PDF 저장</button>
+          <button class="pill" id="downloadPng">PNG 커버 다운로드</button>
+        </div>
+      </div>
+      <figure class="ref-panel">
+        <img src="summer_beach_17.png" alt="Reference Model" />
+        <figcaption class="ref-caption">Reference Model · 얼굴과 전체 인상 일관성 기준</figcaption>
+      </figure>
+    </section>
+
+    <div id="sections"></div>
+    <div id="empty" class="empty">No matching design found.<br />일치하는 디자인을 찾을 수 없습니다.</div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <section class="note">
+        <h3>공통 설정</h3>
+        <ul>
+          <li>Same reference model, consistent facial identity</li>
+          <li>Medium full shot, 9:16 vertical format</li>
+          <li>High-end fashion editorial, realistic skin texture</li>
+          <li>Realistic fabric texture, detailed stitching</li>
+          <li>Natural body proportions, no text, no logo, no watermark</li>
+        </ul>
+      </section>
+      <section class="note">
+        <h3>공통 금지사항</h3>
+        <ul>
+          <li>얼굴 변경, 인물 동일성 붕괴, 의상 반복</li>
+          <li>저가형 코스프레, 비정상적인 손가락, 추가 팔다리</li>
+          <li>비현실적인 신체 비율, 의상과 피부의 융합</li>
+          <li>녹아내리는 원단, 흐릿한 얼굴, 잘린 머리</li>
+          <li>로고, 글자, 워터마크</li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    const referenceImage = "summer_beach_17.png";
+    const collections = [
+      { key: "Resort", id: "resort", title: "Luxury Resort Collection", ko: "럭셔리 리조트 컬렉션", range: "01~10" },
+      { key: "Romantic", id: "romantic", title: "Romantic Summer Collection", ko: "로맨틱 서머 컬렉션", range: "11~20" },
+      { key: "Urban", id: "urban", title: "Urban High Fashion Collection", ko: "어반 하이패션 컬렉션", range: "21~30" },
+      { key: "Ocean", id: "ocean", title: "Ocean and Nature Collection", ko: "오션 앤 네이처 컬렉션", range: "31~40" },
+      { key: "Futuristic", id: "futuristic", title: "Futuristic Couture Collection", ko: "퓨처리스틱 꾸뛰르 컬렉션", range: "41~50" },
+      { key: "Signature", id: "signature", title: "Signature Designer Collection", ko: "시그니처 디자이너 컬렉션", range: "51~60" }
+    ];
+
+    const looks = [
+      ["01","Resort","Pearl Tide Resort Gown","펄 타이드 리조트 가운","ivory halter maxi resort dress","flowing A-line silhouette with a sculpted halter neckline and open shoulder line","silk chiffon, pearl-beaded organza, lightweight satin lining","ivory, champagne gold, translucent pearl white","micro pearls along the neckline, soft tide-like draping, shell-shaped gold earrings","holding the skirt hem lightly while looking over one shoulder","ocean-view terrace at a luxury beach resort","golden-hour backlight with soft rim light","luxury resort, pearl, chiffon, golden hour","#fff6e8,#d9b772,#f4ede1"],
+      ["02","Resort","Citrus Mirage Cape Dress","시트러스 미라지 케이프 드레스","citrus silk midi dress with a sheer cape","column midi silhouette with asymmetric cape sleeve and clean waist seam","washed silk, transparent organza cape, fine linen underlayer","soft lemon, warm cream, pale gold","tiny crystal citrus blossom embroidery, slim gold cuff, strappy sandals","standing front-facing with one hand on the waist","infinity pool deck with pale stone flooring","bright diffused sunlight","resort midi, organza cape, citrus, crystal","#fff0a6,#fff8dc,#c9a35a"],
+      ["03","Resort","Azure Villa Jumpsuit","애저 빌라 점프수트","azure wide-leg summer jumpsuit","fluid wide-leg jumpsuit with crossed neckline and wrapped waist","silk crepe, fine mesh back panel, satin binding","azure blue, ivory, brushed gold","architectural waist knot, minimal gold hoop earrings, woven clutch","walking slowly toward camera","private villa corridor with ocean glimpses","clean morning natural light","jumpsuit, azure, villa, wrapped waist","#86c8e8,#f8f1e6,#cda45e"],
+      ["04","Resort","Sunset Fan Pleat Dress","선셋 팬 플리츠 드레스","sunset pleated mini dress","fan-pleated mini silhouette with square neckline and soft puff sleeves","pleated silk organza, cotton-silk lining","coral peach, blush pink, pale sand","radial pleats, pearl waist pin, delicate ankle-strap heels","three-quarter side pose with chin gently turned","sunset beach promenade with palm trees","warm sunset glow","mini dress, fan pleats, coral, promenade","#ff9d86,#ffd1c7,#e5c59a"],
+      ["05","Resort","Marble Atrium Linen Set","마블 아트리움 리넨 세트","tailored linen jacket and shorts setup","relaxed summer suit silhouette with cropped jacket and high-waist tailored shorts","ivory linen, silk faille lapel, mother-of-pearl buttons","white ivory, sand beige, muted gold","sculpted lapel, shell buttons, slim leather belt","leaning lightly against a marble column","luxury hotel marble lobby","soft fashion advertising light","linen suit, tailored shorts, marble, shell buttons","#fffaf0,#d8c0a0,#b88c45"],
+      ["06","Resort","Palm Shadow Wrap Dress","팜 섀도 랩 드레스","palm-shadow silk wrap dress","wrap midi silhouette with deep but elegant V neckline and flutter sleeves","printed silk, sheer chiffon sleeve overlay","sage green, ivory, palm-shadow olive","hand-painted palm pattern, small pearl drop necklace, raffia mini bag","adjusting her hair naturally","tropical garden path beside a resort","filtered natural light through palm leaves","wrap dress, palm print, sage, tropical","#b8c9a4,#fff8ed,#6f7f59"],
+      ["07","Resort","Golden Sand Sarong Set","골든 샌드 사롱 세트","luxury sarong skirt and sculpted crop top set","asymmetric sarong skirt with structured modest crop top and soft shoulder drape","matte satin, linen blend, fine metallic thread","sand beige, cream, antique gold","folded waist drape, bead-trimmed shoulder, gold sandals","standing in a calm runway pose","yacht marina boardwalk","late afternoon natural light","sarong set, yacht marina, metallic thread","#e7cfa8,#fff6e8,#b9904d"],
+      ["08","Resort","Opal Poolside Column Dress","오팔 풀사이드 컬럼 드레스","opal satin column dress","sleek column silhouette with boat neckline and side organza panel","opal satin, transparent organza, silk lining","opal white, mist blue, pale rose","subtle side crystals, pearl hair pin, silver sandals","one knee slightly bent, gaze directly at camera","minimal poolside cabana","bright white diffused light","column dress, opal satin, poolside, crystals","#f7f8f3,#cfe9f5,#f6cfd6"],
+      ["09","Resort","Terracotta Resort Co-ord","테라코타 리조트 코디 세트","terracotta resort two-piece set","sleeveless long tunic with split side and wide-leg pants","ramie linen, silk piping, woven jacquard belt","terracotta, cream, muted copper","textured belt, copper bead tassels, sculptural earrings","walking beside a low stone wall","coastal cliff villa garden","golden-hour side light","two-piece, terracotta, ramie linen, cliff villa","#c97855,#fff2df,#a86843"],
+      ["10","Resort","White Orchid Draped Dress","화이트 오키드 드레이프 드레스","white orchid draped maxi dress","one-shoulder draped maxi silhouette with a soft waist cascade","silk jersey, chiffon petal layers, satin lining","orchid white, pearl, pale champagne","petal-like shoulder drape, crystal orchid brooch, pearl bracelet","holding the draped fabric at the side","oceanfront resort staircase","soft sunset backlight","one-shoulder, orchid, draped maxi, resort","#fffaf7,#ead9bf,#fff1e6"],
+
+      ["11","Romantic","Blush Garden Tea Dress","블러시 가든 티 드레스","blush floral tea-length dress","tea-length silhouette with sweetheart neckline and gentle puff sleeves","silk tulle, embroidered organza, cotton-silk lining","blush pink, cream, leaf green","tiny floral embroidery, pearl buttons, ribbon waist tie","holding a flower stem near the waist","summer rose garden","soft morning light","romantic, floral, tea dress, blush","#f8cbd2,#fff5ec,#9dbb87"],
+      ["12","Romantic","Lavender Ribbon Midi","라벤더 리본 미디 드레스","lavender ribbon midi dress","slender midi silhouette with ribbon shoulder straps and pleated skirt","silk chiffon, satin ribbon, fine lace insert","lavender, ivory, cool silver","lace waist panel, crystal hair clip, satin sandals","three-quarter pose with skirt slightly lifted","glass greenhouse full of soft greenery","bright diffused greenhouse light","lavender, ribbon, pleated, greenhouse","#cdb8ec,#fff8f0,#c9ced6"],
+      ["13","Romantic","Peony Cloud Organza Dress","피오니 클라우드 오간자 드레스","peony organza cloud mini dress","soft voluminous mini silhouette with rounded neckline and airy balloon sleeves","layered organza, silk lining, hand-cut floral appliques","peony pink, mist white, pale gold","floating floral appliques, pearl earrings, slim ankle strap shoes","standing front-facing with relaxed hands","minimal white fashion studio with flowers","soft studio lighting","organza, peony, cloud mini, romantic","#f5a8bc,#fffaf7,#d9bd78"],
+      ["14","Romantic","Moonlit Chiffon Slip Dress","문릿 시폰 슬립 드레스","moonlit chiffon slip dress","bias-cut slip silhouette with sheer long overlay and delicate cowl neckline","silk satin, moonlight chiffon, fine mesh straps","moon ivory, silver gray, pale blue","silver bead trails, thin crystal necklace, satin clutch","looking over the shoulder beside a railing","moonlit rooftop garden","cool evening cinematic light","slip dress, chiffon overlay, moonlit, beads","#f4f1e8,#ccd3de,#b9cce6"],
+      ["15","Romantic","Apricot Lace Skirt Set","애프리콧 레이스 스커트 세트","apricot lace blouse and skirt set","cropped lace blouse with high-waist flared midi skirt","cotton lace, silk organza, matte satin waistband","apricot, cream, soft caramel","lace scallop edge, pearl belt buckle, small earrings","seated lightly on a garden bench","sunny courtyard garden","warm diffused sunlight","lace set, apricot, flared skirt, courtyard","#ffc6a6,#fff1df,#c89a69"],
+      ["16","Romantic","Rosewater Asymmetric Dress","로즈워터 비대칭 드레스","rosewater asymmetric ruffle dress","asymmetric midi silhouette with diagonal neckline and tiered ruffle hem","silk georgette, sheer tulle, satin lining","rosewater pink, ivory, champagne","soft ruffle tiers, pearl shoulder pin, nude sandals","mid-step walking pose","boutique hotel veranda","golden natural light","asymmetric, ruffle, rosewater, veranda","#f3b8c0,#fff7ed,#d7b46c"],
+      ["17","Romantic","Dewdrop Crystal Sundress","듀드롭 크리스털 선드레스","dewdrop crystal summer dress","fit-and-flare sundress with scoop neckline and delicate straps","cotton silk, translucent mesh overlay, tiny crystals","fresh white, pale mint, crystal clear","dewdrop crystal scatter, mint sash, pearl studs","one hand gently touching hair","morning botanical garden walkway","bright soft natural light","sundress, dewdrop crystals, mint, botanical","#ffffff,#cdebdc,#d8f4ff"],
+      ["18","Romantic","Bluebell Pleated Maxi","블루벨 플리츠 맥시 드레스","bluebell pleated maxi dress","empire-waist maxi silhouette with narrow pleats and flutter sleeves","silk chiffon, pleated georgette, soft satin lining","bluebell, ivory, pale lilac","micro pleats, crystal waist chain, silver sandals","standing near flowers with shoulders relaxed","European-style summer garden arch","clear afternoon light","pleated maxi, bluebell, empire waist, garden","#8eb7e8,#fff8ee,#cdb4db"],
+      ["19","Romantic","Vanilla Pearl Bolero Dress","바닐라 펄 볼레로 드레스","vanilla pearl bolero dress","sleeveless midi dress with cropped sheer bolero and narrow waist","silk crepe, pearl-beaded tulle bolero, satin lining","vanilla cream, pearl white, soft gold","pearl bolero trim, gold hair comb, pearl ring","front pose with one hand at the waist","bright bridal-inspired fashion atelier","soft editorial studio light","bolero, pearl, vanilla, atelier","#fff1d2,#ffffff,#dfc07a"],
+      ["20","Romantic","Cherry Blossom Layered Dress","체리블라썸 레이어드 드레스","cherry blossom layered dress","layered A-line midi silhouette with translucent petal overskirt","silk organza, chiffon, embroidered tulle","pale cherry pink, white, warm beige","petal overskirt, floral embroidery, pearl anklet","turning gently as fabric moves","pink summer flower tunnel","romantic golden-hour light","layered dress, cherry blossom, organza, petals","#ffd6df,#fffdf7,#dcc0a1"],
+
+      ["21","Urban","Ivory Rooftop Utility Dress","아이보리 루프톱 유틸리티 드레스","ivory luxury utility mini dress","structured mini silhouette with square neckline, utility pockets, and tailored belt","technical cotton, satin tape, brushed metal snaps","ivory, stone gray, pale gold","precision pockets, metal snap details, slim belt, modern cuff","standing with one hand in pocket","clean city rooftop with skyline","bright editorial daylight","urban, utility, mini dress, rooftop","#f6f0e5,#bfc1c0,#c9a35a"],
+      ["22","Urban","Graphite Silk Summer Suit","그래파이트 실크 서머 수트","graphite silk summer suit","relaxed blazer and Bermuda shorts silhouette with sharp lapels","silk wool tropical, cupro lining, matte metal buttons","graphite gray, ivory, muted silver","longline blazer, tailored shorts, sculptural silver earrings","walking across a modern plaza","downtown art district","clean high-fashion advertising light","summer suit, graphite, Bermuda shorts, plaza","#707070,#f8f4eb,#c5c5c0"],
+      ["23","Urban","White Mesh Trench Dress","화이트 메시 트렌치 드레스","white mesh trench dress","sleeveless trench-dress silhouette with translucent mesh side panels","crisp cotton, technical mesh, satin belt","optic white, warm beige, transparent white","storm-flap detail, soft belt tie, minimal gold rings","leaning against a gallery wall","modern art museum exterior","diffused museum courtyard light","trench dress, mesh, gallery, white","#ffffff,#e5d4bc,#f1f1ee"],
+      ["24","Urban","Ink Blue Denim Couture Set","잉크 블루 데님 꾸뛰르 세트","ink blue couture denim set","cropped sculpted jacket with high-waist asymmetric denim skirt","premium denim, silk topstitching, crystal rivets","ink blue, ivory topstitch, silver crystal","curved jacket seams, crystal rivets, pointed slingback heels","three-quarter side pose","stylish city street with pale stone buildings","soft late afternoon light","denim couture, crystal rivets, city street","#243f63,#fff4e4,#cfd8e3"],
+      ["25","Urban","Concrete Rose Column Dress","콘크리트 로즈 컬럼 드레스","concrete rose column dress","minimal column midi silhouette with architectural shoulder fold","matte crepe, silk faille, hidden stretch lining","concrete beige, dusty rose, ivory","folded shoulder structure, rose-gold bar brooch, slim sandals","static runway pose","minimal exhibition space","soft studio light with rim light","minimal luxury, column, architectural shoulder","#d0c4b4,#c99aa0,#fff8ef"],
+      ["26","Urban","Chrome Belted Shirt Dress","크롬 벨티드 셔츠 드레스","chrome belted shirt dress","oversized shirt-dress silhouette with cinched waist and sculptural cuff sleeves","silk poplin, chrome belt plate, sheer organza inner panel","white, pale blue, chrome silver","wide cuffs, chrome waist plate, geometric earrings","adjusting cuff while facing camera","glass office atrium","bright reflected daylight","shirt dress, chrome belt, atrium, poplin","#ffffff,#c9e5f3,#c7c8cc"],
+      ["27","Urban","Pale Lime Gallery Jumpsuit","페일 라임 갤러리 점프수트","pale lime gallery jumpsuit","tailored sleeveless jumpsuit with tapered pants and folded neckline","linen silk, matte satin, tonal topstitching","pale lime, ivory, warm gray","folded neckline, tonal belt, sculptural resin bracelet","standing beside a large artwork","white contemporary gallery","balanced soft gallery lighting","jumpsuit, pale lime, tailored, gallery","#d8e8ac,#fff9ee,#bebbb1"],
+      ["28","Urban","Sandstone Layered Pants Set","샌드스톤 레이어드 팬츠 세트","sandstone layered pants set","long sleeveless tunic over fluid wide-leg pants with split panels","silk linen, sheer voile overlay, satin piping","sandstone, cream, muted taupe","layered side panels, slim gold chain belt, flat sandals","walking with fabric moving naturally","urban resort shopping arcade","warm reflected daylight","pants set, layered tunic, sandstone, arcade","#d9c2a0,#fff4e5,#a39180"],
+      ["29","Urban","Soft Gold Studio Mini","소프트 골드 스튜디오 미니 드레스","soft gold sculpted mini dress","structured mini silhouette with curved neckline and short cape sleeve","silk mikado, lightweight boning, satin lining","soft gold, ivory, pale peach","curved seaming, tiny crystal shoulder line, pearl studs","front-facing high-fashion pose","bright fashion studio with seamless backdrop","premium studio lighting","sculpted mini, mikado, soft gold, studio","#e4c36f,#fff7ea,#ffd8c8"],
+      ["30","Urban","Porcelain Blue Blazer Dress","포슬린 블루 블레이저 드레스","porcelain blue blazer dress","tailored blazer-dress silhouette with asymmetric hem and clean lapel","summer wool crepe, silk lining, enamel buttons","porcelain blue, ivory, silver","asymmetric hem, enamel buttons, silver ear cuff","looking over shoulder while turning","elevated pedestrian bridge","clear summer daylight","blazer dress, porcelain blue, asymmetric, bridge","#a7cae8,#fff8ee,#c9d2dc"],
+
+      ["31","Ocean","Wave Crest Chiffon Gown","웨이브 크레스트 시폰 가운","wave crest chiffon gown","flowing maxi silhouette with wave-shaped neckline and cascading skirt panels","silk chiffon, organza wave appliques, satin lining","seafoam, white, translucent aqua","wave appliques, pearl drop earrings, silver sandals","holding one chiffon panel in the breeze","coastal cliff overlook","golden-hour ocean light","ocean, wave, chiffon, seafoam","#bde9df,#ffffff,#86d9e8"],
+      ["32","Ocean","Coral Reef Beaded Dress","코럴 리프 비즈 드레스","coral reef beaded midi dress","fitted bodice with flared midi skirt and organic reef embroidery","silk crepe, beaded tulle, fine mesh","coral, ivory, pale turquoise","coral-like beadwork, turquoise ring, pearl hair pin","standing near a white stone balustrade","seaside villa terrace","warm sunset rim light","coral, beaded, reef, villa terrace","#ff8a76,#fff4e9,#8bd3d1"],
+      ["33","Ocean","Seagrass Linen Wrap Set","씨그래스 리넨 랩 세트","seagrass linen wrap set","wrapped sleeveless top with asymmetric midi skirt","organic linen, silk binding, handwoven belt","seagrass green, cream, straw beige","woven belt, shell earrings, raffia sandals","leaning gently on a wooden boardwalk railing","quiet beach boardwalk","soft afternoon natural light","linen, seagrass, wrap set, boardwalk","#92a978,#fff2df,#d7b98c"],
+      ["34","Ocean","Aqua Organza Bubble Dress","아쿠아 오간자 버블 드레스","aqua organza bubble dress","short bubble silhouette with off-shoulder neckline and translucent volume","silk organza, lightweight taffeta, soft lining","aqua, pearl white, ice blue","subtle crystal droplets, silver cuff, clear-strap heels","static pose with shoulders relaxed","minimal pool party lounge","bright diffused pool light","bubble dress, aqua, organza, crystal droplets","#90e0e8,#ffffff,#ccefff"],
+      ["35","Ocean","Shell Pink Draped Jumpsuit","셸 핑크 드레이프 점프수트","shell pink draped jumpsuit","fluid jumpsuit with one-shoulder drape and wide palazzo legs","silk jersey, chiffon overlay, satin waistband","shell pink, ivory, soft pearl","shell-shaped waist ornament, pearl bracelet, nude sandals","walking beside shallow water","sunlit resort lagoon edge","bright natural light","draped jumpsuit, shell pink, lagoon, palazzo","#f5bfc0,#fff5ea,#e8dccb"],
+      ["36","Ocean","Tidepool Crystal Slip Dress","타이드풀 크리스털 슬립 드레스","tidepool crystal slip dress","slim slip midi with transparent layered overskirt and delicate straps","silk satin, crystal mesh, transparent tulle","pale aqua, silver, clear crystal","tidepool crystal scatter, silver anklet, small earrings","looking down slightly while holding overskirt","reflective shallow pool terrace","soft blue-hour light","slip dress, crystal mesh, tidepool, blue hour","#aee8ed,#c5c9d0,#eefcff"],
+      ["37","Ocean","Driftwood Tailored Co-ord","드리프트우드 테일러드 코디","driftwood tailored summer co-ord","sleeveless vest and pleated long shorts with softened tailoring","hemp linen, silk twill, corozo buttons","driftwood beige, ivory, warm gray","pleated shorts, natural buttons, leather sandals","standing with one hand on railing","coastal cafe terrace","gentle morning light","eco fashion, hemp linen, driftwood, terrace","#c7b299,#fff8ed,#b8b2a8"],
+      ["38","Ocean","Marine Blue Sail Dress","마린 블루 세일 드레스","marine blue sail dress","A-line midi dress with sail-inspired asymmetric panel and crisp neckline","cotton poplin, silk organza panel, satin binding","marine blue, white, rope beige","sail panel, rope-braid belt, gold studs","three-quarter walking pose","yacht dock with white sails","clear high-summer daylight","sail dress, marine blue, yacht dock, poplin","#1e6793,#ffffff,#cfb48b"],
+      ["39","Ocean","Lotus Lagoon Maxi Dress","로터스 라군 맥시 드레스","lotus lagoon maxi dress","empire maxi silhouette with layered lotus-petal skirt","silk chiffon, embroidered tulle, bamboo-silk lining","lotus white, lagoon green, pale yellow","lotus petal embroidery, pearl necklace, delicate sandals","holding the skirt lightly with both hands","water garden with lotus leaves","soft cloudy natural light","lotus, lagoon, maxi, embroidered tulle","#fffdf5,#86b99e,#f3dfa3"],
+      ["40","Ocean","Silver Foam Asymmetric Gown","실버 폼 비대칭 가운","silver foam asymmetric gown","asymmetric high-low gown with sculpted shoulder and foam-like organza hem","silk satin, silver organza, fine crystal net","silver white, pale gray, ocean mist","foam-shaped organza hem, crystal ear climber, metallic sandals","turning gently as hem moves","rocky beach at sunset","sunset backlight with subtle rim light","asymmetric gown, silver foam, organza, sunset","#f2f2ee,#cfd3d8,#dfeff2"],
+
+      ["41","Futuristic","Pearl Circuit Mini Dress","펄 서킷 미니 드레스","pearl circuit couture mini dress","structured mini silhouette with curved neckline and modular shoulder caps","pearl-coated vegan leather, transparent mesh, satin lining","pearl white, pale silver, blush light","circuit-like pearl beading, chrome cuff, sculptural heels","front-facing runway pose","futuristic white architecture","clean luminous studio daylight","futuristic, pearl circuit, vegan leather, mini","#fffefa,#d8dce2,#ffd7df"],
+      ["42","Futuristic","Hologram Organza Suit","홀로그램 오간자 수트","hologram organza summer suit","cropped blazer and tapered pants with translucent organza overlay","iridescent organza, silk crepe, recycled nylon lining","holographic white, ice blue, soft lavender","translucent lapel overlay, silver belt, geometric earrings","walking through a glass corridor","future museum glass corridor","cool diffused light","hologram, organza suit, future museum","#f8ffff,#c7e8ff,#d7c8ff"],
+      ["43","Futuristic","Liquid Chrome Slip Dress","리퀴드 크롬 슬립 드레스","liquid chrome slip dress","bias-cut midi slip silhouette with liquid-metal side drape","metallic satin, silk mesh, soft stretch lining","liquid silver, ivory, pale blue","metal drape accent, minimalist silver choker, clear heels","leaning lightly against a glass wall","minimal futuristic lounge","soft cinematic blue-white light","liquid chrome, slip dress, metallic satin","#cfd3d8,#fff9ee,#bcd9f4"],
+      ["44","Futuristic","Solar Flare Cape Jumpsuit","솔라 플레어 케이프 점프수트","solar flare cape jumpsuit","tailored jumpsuit with removable translucent cape and flared leg","silk crepe, sheer recycled organza, matte gold hardware","solar yellow, ivory, pale gold","floating cape, gold hardware belt, angular earrings","standing with cape trailing behind","sunlit futuristic plaza","bright high-key sunlight","cape jumpsuit, solar, futuristic plaza","#ffe36e,#fff8e6,#caa34f"],
+      ["45","Futuristic","Opal Mesh Layer Dress","오팔 메시 레이어 드레스","opal mesh layered dress","layered midi dress with translucent panels and sculpted waist corset effect","opal mesh, silk organza, satin boning channels","opal white, mint reflection, soft pink","layered transparent panels, tiny crystals, pearl cuff","three-quarter pose with one hand at waist","white minimal exhibition cube","soft rim-lit studio light","opal mesh, layered, transparent, couture","#fbfff8,#d0f2e3,#ffd4df"],
+      ["46","Futuristic","Skyline Silver Pants Set","스카이라인 실버 팬츠 세트","skyline silver pants set","asymmetric sleeveless top with high-waist wide-leg pants","technical satin, recycled silk, metallic piping","pale silver, sky blue, white","metallic piping, asymmetric shoulder, sculptural bracelet","walking on a rooftop helipad","bright city rooftop helipad","clear daylight with soft fill","silver pants set, skyline, technical satin","#d7d9dc,#a6d5f2,#ffffff"],
+      ["47","Futuristic","Glass Petal Couture Dress","글라스 페탈 꾸뛰르 드레스","glass petal couture dress","fit-and-flare midi with transparent petal-like shoulder architecture","clear organza, silk mikado, crystal tulle","clear white, ice pink, pearl","glass-petal shoulders, crystal waist dots, silver sandals","static couture pose","futuristic botanical conservatory","bright diffused conservatory light","glass petal, couture, transparent organza","#ffffff,#ffdbe6,#e6f7ff"],
+      ["48","Futuristic","Aurora Pleated Tech Dress","오로라 플리츠 테크 드레스","aurora pleated tech dress","pleated midi silhouette with high neckline and asymmetric side opening","technical pleated fabric, iridescent silk, mesh lining","aurora mint, lavender, pearl white","heat-set pleats, iridescent waist clip, chrome earrings","turning softly to show pleats","curved futuristic architecture","cool luminous daylight","aurora, pleated, tech dress, architecture","#bdf4df,#cbbcff,#fffefa"],
+      ["49","Futuristic","Recycled Crystal Denim Dress","리사이클드 크리스털 데님 드레스","recycled crystal denim dress","structured sleeveless denim midi with corset seams and softened hem","recycled pale denim, crystal mesh inserts, organic cotton lining","pale denim blue, white, clear crystal","corset seams, crystal mesh side panels, silver belt","one hand on hip in runway pose","industrial-chic white studio","premium studio light","recycled denim, crystal mesh, corset seams","#9bb9d8,#ffffff,#d7e6f0"],
+      ["50","Futuristic","Moon Shell Metallic Gown","문 셸 메탈릭 가운","moon shell metallic gown","sleek maxi silhouette with shell-like metallic bodice and soft skirt","metallic silk lamé, chiffon skirt, satin lining","moon silver, shell ivory, pale champagne","shell bodice, pearl chain earrings, metallic sandals","looking over shoulder with calm expression","night pool party with refined lights","cinematic night lighting","metallic gown, moon shell, night pool","#c9cbd0,#fff7e8,#d8bf85"],
+
+      ["51","Signature","Modern Hanbok Silk Dress","모던 한복 실크 드레스","modern Korean-inspired silk dress","midi dress silhouette inspired by hanbok lines with wrapped bodice and flowing skirt","silk ramie, organza jeogori-inspired overlay, satin tie","ivory, pale jade, soft gold","modern goreum tie, jade earrings, subtle embroidery","standing front-facing with serene posture","minimal Korean courtyard in summer","soft natural daylight","modern hanbok, silk ramie, jade, Korean beauty","#fff8e8,#b7d7c0,#caa35d"],
+      ["52","Signature","Signature Ivory Sculpt Dress","시그니처 아이보리 스컬프 드레스","signature ivory sculptural dress","architectural midi silhouette with sculpted bodice and petal hem","silk mikado, organza underlayer, fine boning","ivory, warm white, antique gold","petal hem structure, gold brooch, pearl earrings","static editorial pose","minimal ivory exhibition hall","high-end studio lighting","signature, sculptural, ivory, petal hem","#fff9ef,#ffffff,#c49a51"],
+      ["53","Signature","Black Pearl Summer Dress","블랙 펄 서머 드레스","black pearl summer dress","elegant midi with bateau neckline and sheer ivory sleeve layer","black silk crepe, pearl-beaded tulle, ivory organza","soft black, ivory, pearl white","pearl constellation embroidery, black satin sandals, pearl studs","three-quarter pose with relaxed shoulders","bright marble lobby for contrast","soft fashion advertising light","black pearl, elegant midi, marble lobby","#24201d,#fff8ec,#ffffff"],
+      ["54","Signature","Champagne Ribbon Column","샴페인 리본 컬럼 드레스","champagne ribbon column dress","slim column dress with long floating side ribbons and square neckline","champagne satin, silk ribbon, fine mesh lining","champagne, cream, pale rose","floating ribbon panels, crystal square buckle, pearl ring","walking as ribbons trail naturally","luxury boutique staircase","warm diffused indoor light","column, champagne, ribbons, boutique","#e7c98a,#fff2dd,#f5c9ce"],
+      ["55","Signature","Gardenia White Pants Gown","가드니아 화이트 팬츠 가운","gardenia white pants gown","wide-leg pants gown with dress-like overskirt and structured bodice","silk crepe, chiffon overskirt, gardenia applique organza","gardenia white, soft green, pearl","gardenia shoulder applique, pearl belt, white sandals","holding overskirt lightly to reveal pants","summer villa garden entrance","bright natural light","pants gown, gardenia, overskirt, villa","#ffffff,#bfd2b1,#f2eadc"],
+      ["56","Signature","Rouge Coral Couture Mini","루즈 코럴 꾸뛰르 미니 드레스","rouge coral couture mini dress","couture mini silhouette with sculpted rose-fold bodice and clean skirt","silk faille, organza folds, satin lining","rouge coral, ivory, muted gold","rose-fold bodice, gold ear cuff, slim bracelet","front runway pose with one hand at waist","fashion studio with warm cream backdrop","premium studio lighting","couture mini, rouge coral, rose fold","#e85f55,#fff6e8,#caa45d"],
+      ["57","Signature","Jade Ink Asymmetric Set","제이드 잉크 비대칭 세트","jade ink asymmetric designer set","asymmetric sleeveless tunic with tailored ankle pants and sculpted sash","silk twill, linen blend, satin sash","deep jade, ivory, ink green","sculpted sash, jade ring, gold sandals","leaning beside a minimal stone wall","quiet museum courtyard","soft afternoon light","asymmetric set, jade ink, designer, courtyard","#1f6b5f,#fff8ed,#173f39"],
+      ["58","Signature","Crystal Dune Maxi Dress","크리스털 듄 맥시 드레스","crystal dune maxi dress","soft maxi silhouette with diagonal drape and sand-wave crystal lines","silk georgette, crystal tulle, satin lining","dune beige, champagne, crystal clear","sand-wave crystal lines, delicate choker, nude sandals","walking on pale stone path","desert-inspired luxury resort garden","golden-hour light","crystal dune, maxi, diagonal drape","#d8bd92,#f3dcaa,#fff7e9"],
+      ["59","Signature","Porcelain Floral Jacket Dress","포슬린 플로럴 재킷 드레스","porcelain floral jacket dress","short jacket-dress silhouette with tailored waist and porcelain floral embroidery","silk jacquard, organza lining, enamel buttons","porcelain white, blue floral, pale gold","blue floral embroidery, enamel buttons, pearl hair pin","looking over shoulder in a turning pose","bright old-world hotel corridor","soft diffused window light","jacket dress, porcelain floral, jacquard","#ffffff,#7ba6d9,#d8b76e"],
+      ["60","Signature","Finale Gold Orchid Gown","피날레 골드 오키드 가운","finale gold orchid gown","luxury finale maxi gown with one-shoulder orchid drape and refined train","silk satin, crystal organza, hand-embroidered orchid lace","soft gold, orchid white, champagne","orchid lace drape, crystal waist trail, pearl-and-gold earrings","centered finale pose with calm confident gaze","grand cream marble hall","glowing high-end editorial light","finale gown, gold orchid, luxury, marble hall","#d8b45f,#fff9ee,#ecd5a4"]
+    ];
+
+    const enBase = "Use the uploaded reference image as the main face reference. Keep the same young woman with the same oval face shape, delicate eyes, natural eye expression, eyebrow shape, nose, soft lips, fair warm skin tone, long brown hair, hairline, pure and sophisticated impression, and realistic facial proportions.";
+    const koBase = "업로드한 레퍼런스 이미지를 메인 얼굴 레퍼런스로 사용한다. 동일한 젊은 여성의 타원형 얼굴, 섬세한 눈매, 자연스러운 눈동자 느낌, 눈썹 형태, 코, 부드러운 입술, 따뜻하고 밝은 피부톤, 긴 갈색 머리, 헤어라인, 청순하고 세련된 인상, 사실적인 얼굴 비율을 유지한다.";
+    const enQuality = "Medium full shot from head to mid-thigh only, no knees, no calves, no feet, centered fashion magazine editorial composition, vertical 9:16 format. Realistic skin texture, realistic fabric texture, detailed stitching, natural body proportions, no logo, no text, no watermark, no extra limbs, no distorted hands, no cropped head.";
+    const koQuality = "머리부터 허벅지 중간까지만 보이는 미디엄 풀샷, 무릎·종아리·발은 보이지 않게 구성, 인물을 중심에 둔 패션 매거진 에디토리얼 구도, 9:16 세로 화면. 사실적인 피부 질감, 사실적인 원단 질감, 정교한 봉제 디테일, 자연스러운 신체 비율, 로고 없음, 글자 없음, 워터마크 없음, 추가 팔다리 없음, 왜곡된 손 없음, 머리 잘림 없음.";
+
+    const koCollection = {
+      Resort: "럭셔리 리조트",
+      Romantic: "로맨틱 서머",
+      Urban: "어반 하이패션",
+      Ocean: "오션 앤 네이처",
+      Futuristic: "퓨처리스틱 꾸뛰르",
+      Signature: "시그니처 디자이너"
+    };
+
+    const casualLooks = [
+      ["Pearl Linen Resort Shirt Set","펄 리넨 리조트 셔츠 세트","long natural beach waves","gentle bright smile, strong 3/4 left head turn","oversized ivory translucent linen shirt over a pearl-white bandeau-style inner top, high-waist cream tailored linen shorts, raffia mini tote"],
+      ["Azure Linen Vest Shorts Set","애저 리넨 베스트 쇼츠 세트","long sleek straight hair tucked behind one ear","cool chic expression, strong 3/4 right head turn, chin lowered","azure sleeveless tailored linen vest, ivory high-waist shorts, woven clutch"],
+      ["Seaside Stripe Denim Casual","씨사이드 스트라이프 데님 캐주얼","long half-up waves with a pearl hair clip","cute playful smile, over-the-shoulder look","blue-and-white cropped striped shirt, white tank, light-wash denim shorts, canvas shoulder bag"],
+      ["Sand Linen Tube Top Trousers","샌드 리넨 튜브탑 팬츠 룩","long layered side-swept waves","near-profile side angle, relaxed soft smile looking away","cream structured summer top, ivory draped shirt, sand beige linen bottom cropped at the thigh, straw clutch"],
+      ["White Cropped Blazer Shorts Setup","화이트 크롭 블레이저 쇼츠 셋업","long glossy polished waves","confident cool expression, chin raised","cropped ivory short-sleeve blazer, champagne camisole, high-waist white tailored shorts, cream clutch"],
+      ["Mint Mesh Knit Cargo Shorts","민트 메시 니트 카고 쇼츠","long windblown beach-textured hair","dreamy expression looking away from camera","pale mint open-weave knit top, white inner top, ivory cargo shorts, raffia crossbody"],
+      ["Coral Tank Pleated Skort Set","코럴 탱크 플리츠 스코트 세트","long waves with a thin side braid accent","playful sideways grin, diagonal head tilt","coral silk rib tank, ivory pleated skort, cream overshirt, woven mini bag"],
+      ["Pale Denim Crop Shirt Look","페일 데님 크롭 셔츠 룩","long curtain-layer hair with soft curled ends","chin lowered, cute shy smile looking upward","pale denim cropped shirt, white square-neck tank, ivory tailored shorts"],
+      ["Black Tank Sand Cargo Skirt Set","블랙 탱크 샌드 카고 스커트 세트","long soft curls swept over one shoulder","near-profile angle, calm elegant expression looking away","black ribbed tank, sand cargo mini skirt, ivory shirt tied at waist"],
+      ["Oatmeal Knit Cardigan Shorts Set","오트밀 니트 카디건 쇼츠 세트","long soft curls with loose curtain bangs","relaxed summer smile, diagonal head tilt","oatmeal sleeveless knit top, matching open cardigan, cream tailored shorts"],
+      ["Clean Bob Linen Skirt Set","클린 보브 리넨 스커트 세트","clean chin-length bob","bright friendly smile, strong 3/4 left turn","cropped ivory linen shirt, pale sage A-line mini skirt with hidden shorts"],
+      ["Wavy Bob Stripe Knit Shorts","웨이비 보브 스트라이프 니트 쇼츠","short wavy bob","chic confident expression, 3/4 right turn","navy-and-ivory striped knit polo, white tailored shorts, tan mini bag"],
+      ["Lemon Poplin Shirt Shorts","레몬 포플린 셔츠 쇼츠","neat bob tucked behind both ears","cute cheerful smile, head tilted left","pale lemon oversized silk-poplin shirt, white inner top, ivory shorts"],
+      ["Blunt Bob Monochrome Vest Set","블런트 보브 모노크롬 베스트 세트","chic blunt jawline bob","cool powerful expression, near-profile left angle","black sleeveless tailored vest, white shorts, ivory overshirt"],
+      ["Ribbon Bob Summer Denim","리본 보브 서머 데님","short bob with ivory ribbon clip","gentle soft smile, head tilted back right","ivory knit cardigan, white camisole, light denim tailored shorts"],
+      ["Wet Bob Mesh Cargo Look","웨트 보브 메시 카고 룩","short wet-look bob tucked behind one ear","relaxed cool expression, strong right turn","ivory mesh shirt, white tank, beige cargo shorts"],
+      ["Side-Part Bob Tennis Casual","사이드파트 보브 테니스 캐주얼","side-part bob with curled ends","over-the-shoulder energetic smile","white sleeveless polo knit, lavender pleated skort, ivory knit over shoulders"],
+      ["Cream Vest Linen Bermuda","크림 베스트 리넨 버뮤다","bob with curled-in ends","dreamy expression looking away","cream sleeveless linen vest, ivory Bermuda shorts, sheer scarf belt"],
+      ["Pink Poplin White Denim Shorts","핑크 포플린 화이트 데님 쇼츠","micro-layer textured bob","big bright smile, head tilted right","pale pink oversized poplin shirt, white knit top, white denim shorts"],
+      ["Gray Shirt Jacket Shorts Set","그레이 셔츠 재킷 쇼츠 세트","deep side-part blunt bob","serious expression, 3/4 left, eyes upward","light gray short-sleeve shirt jacket, white top, matching tailored shorts"],
+      ["Shoulder Lob Utility Linen Set","숄더 로브 유틸리티 리넨 세트","shoulder-length lob with C-curl ends","relaxed half-smile, strong 3/4 right","ivory utility vest, khaki linen shorts, cream canvas bag"],
+      ["Textured Lob Denim Skirt Set","텍스처드 로브 데님 스커트 세트","textured shoulder lob with beach waves","big smile, playful head tilt","cropped light denim vest, white knit top, denim mini skirt with hidden shorts"],
+      ["Mint Shirt Jacket Shorts Set","민트 셔츠 재킷 쇼츠 세트","polished C-curl lob","cute shy smile, chin lowered","pale mint shirt jacket, white top, matching tailored shorts"],
+      ["Blue Silk Shirt Bermuda Casual","블루 실크 셔츠 버뮤다 캐주얼","medium loose waves","dreamy look away from camera","sky-blue oversized silk shirt, white knit top, ivory Bermuda shorts"],
+      ["Black Crop Shirt Cream Shorts","블랙 크롭 셔츠 크림 쇼츠","medium layered hair with flicked ends","cool serious expression, chin raised","black cropped shirt jacket, ivory top, cream tailored shorts"],
+      ["Lavender Resort Co-ord","라벤더 리조트 코디 세트","medium lob half tucked behind one ear","lovely warm smile, head tilted right","pale lavender linen wrap top, ivory pleated shorts, cream cardigan"],
+      ["Cocoa Linen Street Casual","코코아 리넨 스트리트 캐주얼","asymmetric medium lob","near-profile right, sideways glance","cocoa linen camp shirt, white top, ivory shorts with cocoa piping"],
+      ["Tangerine Shirt White Shorts","탠저린 셔츠 화이트 쇼츠","soft perm lob","playful over-the-shoulder grin","tangerine oversized shirt, white top, white tailored shorts"],
+      ["White Shirt Blue Cargo Shorts","화이트 셔츠 블루 카고 쇼츠","polished shoulder lob","cool indifferent expression, sideways gaze","white oversized shirt, ivory top, pale blue cargo shorts"],
+      ["Rose Beige Knit Skort Set","로즈 베이지 니트 스코트 세트","glossy side-swept lob","elegant calm smile, diagonal head tilt","rose-beige knit top, matching wrap skort, ivory cardigan"],
+      ["High Pony Resort Sport Set","하이 포니 리조트 스포츠 세트","high ponytail with face-framing strands","energetic bright smile, 3/4 right","white sleeveless zip polo, pale aqua skort, ivory mesh jacket"],
+      ["Low Pony Linen Bermuda Look","로우 포니 리넨 버뮤다 룩","low ponytail with cream ribbon","calm expression looking away","ivory linen shirt, beige knit top, sand Bermuda shorts"],
+      ["Ribbon Pony Pink Polo Denim","리본 포니 핑크 폴로 데님","medium-high ponytail with pink ribbon","cute bright smile, chin lowered","pale pink knit polo, light denim shorts, ivory cardigan"],
+      ["Braided Pony Khaki Utility Set","브레이디드 포니 카키 유틸리티 세트","braided ponytail with sleek crown","near-profile left, cool confident expression","khaki safari vest, white top, ivory cargo shorts"],
+      ["Sleek Pony Black Silver Set","슬릭 포니 블랙 실버 세트","sleek high ponytail","cool powerful expression, chin lifted","black sleeveless zip vest, white top, charcoal shorts"],
+      ["Loose Pony Sheer Shirt Shorts","루즈 포니 시어 셔츠 쇼츠","loose low ponytail with airy strands","dreamy look toward sunlight","sheer ivory organza shirt, white tank, pale sand shorts"],
+      ["Side Pony Green Tank Shorts","사이드 포니 그린 탱크 쇼츠","side ponytail over one shoulder","playful sideways grin","sage green rib tank, white linen shirt, ivory tailored shorts"],
+      ["Pearl Tie Navy Shorts Set","펄 타이 네이비 쇼츠 세트","sleek low ponytail with pearl tie","elegant soft smile, 3/4 right","navy linen vest, navy tailored shorts, ivory scarf belt"],
+      ["Scarf Pony Stripe Shirt Look","스카프 포니 스트라이프 셔츠 룩","low ponytail wrapped with silk scarf","dreamy expression looking away","blue-and-white striped shirt, white top, white tailored shorts"],
+      ["Coral Sporty Elegant Shorts Set","코럴 스포티 엘레강트 쇼츠 세트","sporty mid-height ponytail","refreshing open smile, diagonal tilt","white sleeveless collared knit, coral shorts, ivory zip cardigan"],
+      ["Low Bun Linen Vest Set","로우번 리넨 베스트 세트","elegant low bun","serene expression, 3/4 left","ivory linen vest, beige tailored shorts, white top"],
+      ["High Bun Red Point Casual","하이번 레드 포인트 캐주얼","high bun with loose tendrils","bright playful smile, head tilted left","white cropped linen shirt, red knit top, ivory shorts"],
+      ["Messy Bun Oat Denim Casual","메시번 오트 데님 캐주얼","relaxed messy summer bun","dreamy side gaze","oatmeal linen shirt, white knit top, pale denim shorts"],
+      ["Braided Bun Camel Utility Look","브레이디드 번 카멜 유틸리티 룩","braided bun with side tendrils","intense confident gaze, chin raised","camel utility shirt, white top, ivory tailored shorts"],
+      ["Sleek Chignon White Shirt Shorts","슬릭 시뇽 화이트 셔츠 쇼츠","sleek low chignon","calm luxurious side expression","white oversized short-sleeve shirt, ivory top, white tailored shorts"],
+      ["Pearl Pin Bun Blue Linen Set","펄핀 번 블루 리넨 세트","soft bun with pearl pins","gentle warm smile","pale blue cropped linen jacket, white top, pale blue shorts"],
+      ["Twist Updo Silver Gray Vest Set","트위스트 업두 실버 그레이 베스트 세트","twisted updo with sleek sides","chic serious expression, chin lowered","silver-gray sleeveless vest, white top, matching shorts"],
+      ["Tendril Updo Mint Cardigan Casual","텐드릴 업두 민트 카디건 캐주얼","soft tendril updo","cute shy smile, eyes upward","pale mint knit cardigan, white camisole, white pleated casual bottom"],
+      ["Couture Knot Bun Beige Bermuda Set","꾸뛰르 노트 번 베이지 버뮤다 세트","couture knot bun","powerful expression, chin raised","beige short-sleeve shirt jacket, white top, beige Bermuda shorts"],
+      ["Evening Bun Navy Summer Romper","이브닝 번 네이비 서머 롬퍼","elegant evening low bun","relaxed confident smile","navy short-sleeve collared romper with separated shorts, ivory belt"],
+      ["Silk Scarf Hair Resort Casual","실크 스카프 헤어 리조트 캐주얼","hair wrapped with ivory-blue silk scarf","bright resort smile, 3/4 right","ivory linen vest, sky-blue tailored shorts, white top"],
+      ["Wet Look Silver Mesh Casual","웨트룩 실버 메시 캐주얼","wet-look swept-back waves","cool chic near-profile expression","silver-white mesh shirt, white tank, white shorts"],
+      ["Side Braid Modern Korean Linen Set","사이드 브레이드 모던 코리안 리넨 세트","side braid over one shoulder","lovely gentle smile","ivory modern Korean-inspired wrap shirt, pale jade shorts"],
+      ["Mini Braids Blue Camp Shirt Casual","미니 브레이드 블루 캠프셔츠 캐주얼","loose hair with two tiny mini braids","cute playful grin, chin lowered","light blue camp shirt, white top, white shorts"],
+      ["Flower Pin Lemon Shorts Set","플라워핀 레몬 쇼츠 세트","soft waves with white flower pin","soft romantic smile","lemon linen blouse, white top, ivory shorts"],
+      ["Headband Black Cream Resort Casual","헤드밴드 블랙 크림 리조트 캐주얼","hair pulled back with cream wide headband","chic calm near-profile expression","black sleeveless knit top, cream shorts, ivory open shirt"],
+      ["Beach Textured Bob Denim Casual","비치 텍스처 보브 데님 캐주얼","beach-textured short bob","relaxed summer smile","white linen top, pale denim open shirt, ivory denim shorts"],
+      ["Glossy Short Crop Silver Casual","글로시 쇼트 크롭 실버 캐주얼","glossy short crop-bob","sharp confident expression, chin raised","white sleeveless zip top, silver-gray shorts, translucent overshirt"],
+      ["Korean Ribbon Hair Ivory Jade Casual","코리안 리본 헤어 아이보리 제이드 캐주얼","half-up hair with long ivory ribbon","graceful soft smile","ivory wrap-style shirt, pale jade tailored shorts, white top"],
+      ["Jeweled Hair Finale Gold Casual Set","주얼 헤어 피날레 골드 캐주얼 세트","half-up waves with pearl and crystal hair jewels","finale confident smile, diagonal head tilt","champagne-gold shirt jacket, white top, ivory tailored shorts with gold piping"]
+    ];
+
+    const sectionsEl = document.getElementById("sections");
+    const emptyEl = document.getElementById("empty");
+    let currentFilter = "All";
+
+    function koPrompt(look) {
+      const [num, collection] = look;
+      const meta = casualLooks[Number(num) - 1];
+      const [enName, koName, hair, expression, outfit] = meta;
+      return `${koBase}
+
+의상: ${koName}, ${koCollection[collection]} 컬렉션의 프리미엄 캐주얼 여름 패션.
+헤어스타일: ${hair}.
+고개 방향과 표정: ${expression}.
+의상 구성: ${outfit}.
+소재와 디테일: 고급 여름 소재, 사실적인 봉제, 세련된 액세서리, 실제 착용 가능한 디자이너 캐주얼 완성도.
+배경: 룩에 어울리는 밝고 고급스러운 여름 리조트, 정원, 테라스, 갤러리 또는 도심 공간.
+조명: 밝고 자연스러운 여름 패션 에디토리얼 조명.
+
+머리부터 허벅지 중간까지만 보이는 미디엄 풀샷, 무릎·종아리·발이 보이지 않게 촬영한다.
+${koQuality}`;
+    }
+
+    function enPrompt(look) {
+      const [num, collection] = look;
+      const meta = casualLooks[Number(num) - 1];
+      const [enName, koName, hair, expression, outfit] = meta;
+      return `${enBase}
+
+Outfit: ${enName}, a premium casual summer fashion look from the ${collections.find(c => c.key === collection).title}.
+Hairstyle: ${hair}.
+Head angle and expression: ${expression}.
+Outfit composition: ${outfit}.
+Materials and details: premium summer fabrics, realistic stitching, refined accessories, wearable designer casual finish.
+Background: a bright high-end summer resort, garden, terrace, gallery, or urban space that matches the look.
+Lighting: bright natural summer fashion editorial lighting.
+
+Medium full shot only from the top of the head to mid-thigh, with no knees, no calves, and no feet visible.
+${enQuality}`;
+    }
+
+    function designConcept(look) {
+      const [num, collection] = look;
+      const meta = casualLooks[Number(num) - 1];
+      return `${koCollection[collection]} 무드 안에서 ${meta[2]}와 ${meta[4]}를 매칭한 프리미엄 캐주얼 여름 룩이다. 고개 방향과 표정을 다르게 설계해 60장 전체가 반복되지 않도록 구성했다.`;
+    }
+
+    function cardHTML(look) {
+      const [num, collection, enName, koName, garment, silhouette, materials, colors, details, pose, background, lighting, keywords, swatches] = look;
+      const meta = casualLooks[Number(num) - 1];
+      const displayEnName = meta[0];
+      const displayKoName = meta[1];
+      const en = enPrompt(look);
+      const ko = koPrompt(look);
+      const searchText = `${num} ${collection} ${displayEnName} ${displayKoName} ${meta.join(" ")} ${keywords}`.toLowerCase();
+      const accent = swatches.split(",")[0];
+      const swatchHTML = swatches.split(",").map(color => `<span class="swatch" style="background:${color}"></span>`).join("");
+      const tags = ["premium casual", "summer", "mid-thigh shot", meta[2], collection].map(t => `<span class="tag">${t}</span>`).join("");
+      const imagePath = `fashion_images/look_${num}.png`;
+      return `
+        <article class="card" data-collection="${collection}" data-search="${searchText}">
+          <div class="visual" style="--accent:${accent}33">
+            <img src="${imagePath}" alt="${enName}" loading="lazy" onerror="this.src='${referenceImage}'" />
+            <div class="look-plate">
+              <strong>${num}. ${displayEnName}</strong>
+              <div>${displayKoName}</div>
+              <div class="swatches">${swatchHTML}</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="num">${num}</span>
+            <h3>${displayEnName}</h3>
+            <div class="ko-name">${displayKoName}</div>
+            <p class="concept"><b>[DESIGN CONCEPT]</b><br>${designConcept(look)}</p>
+
+            <div class="prompt-box">
+              <div class="prompt-head">
+                <span class="prompt-title">ENGLISH PROMPT</span>
+                <button class="copy-btn" data-copy="${encodeURIComponent(en)}" data-default="Copy English Prompt" data-done="Copied!">Copy English Prompt</button>
+              </div>
+              <pre>${en}</pre>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-head">
+                <span class="prompt-title">한글 프롬프트</span>
+                <button class="copy-btn" data-copy="${encodeURIComponent(ko)}" data-default="한글 프롬프트 복사" data-done="복사 완료!">한글 프롬프트 복사</button>
+              </div>
+              <pre>${ko}</pre>
+            </div>
+
+            <div class="meta">
+              <div><b>DESIGN DETAILS</b>헤어: ${meta[2]}<br>의상: ${meta[4]}<br>차별화: 캐주얼 여름 의상과 헤어/액세서리 매칭</div>
+              <div><b>SHOT INFORMATION</b>촬영 구도: 머리부터 허벅지 중간까지 미디엄 풀샷<br>표정/고개: ${meta[3]}<br>배경: 밝은 여름 에디토리얼 공간<br>조명: 자연광 또는 고급 패션 조명<br>화면 비율: 9:16 세로</div>
+            </div>
+            <div class="keywords">${tags}</div>
+          </div>
+        </article>`;
+    }
+
+    function render() {
+      sectionsEl.innerHTML = collections.map(col => {
+        const cards = looks.filter(look => look[1] === col.key).map(cardHTML).join("");
+        return `<section class="section" id="${col.id}" data-section="${col.key}">
+          <div class="section-head">
+            <div>
+              <div class="kicker">${col.range}</div>
+              <h2>${col.title}</h2>
+            </div>
+            <p>${col.ko}</p>
+          </div>
+          <div class="grid">${cards}</div>
+        </section>`;
+      }).join("");
+      applyFilters();
+    }
+
+    function copyText(text, button) {
+      const decoded = decodeURIComponent(text);
+      const done = () => {
+        const original = button.dataset.default;
+        button.textContent = button.dataset.done;
+        setTimeout(() => { button.textContent = original; }, 1500);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(decoded).then(done).catch(() => fallbackCopy(decoded, done));
+      } else {
+        fallbackCopy(decoded, done);
+      }
+    }
+
+    function fallbackCopy(text, done) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { document.execCommand("copy"); } finally {
+        document.body.removeChild(textarea);
+        done();
+      }
+    }
+
+    function applyFilters() {
+      const query = document.getElementById("search").value.trim().toLowerCase();
+      let visible = 0;
+      document.querySelectorAll(".card").forEach(card => {
+        const byFilter = currentFilter === "All" || card.dataset.collection === currentFilter;
+        const bySearch = !query || card.dataset.search.includes(query);
+        const show = byFilter && bySearch;
+        card.style.display = show ? "" : "none";
+        if (show) visible += 1;
+      });
+      document.querySelectorAll(".section").forEach(section => {
+        const cards = Array.from(section.querySelectorAll(".card"));
+        section.style.display = cards.some(card => card.style.display !== "none") ? "" : "none";
+      });
+      emptyEl.style.display = visible ? "none" : "block";
+    }
+
+    document.addEventListener("click", event => {
+      const copyButton = event.target.closest("[data-copy]");
+      if (copyButton) copyText(copyButton.dataset.copy, copyButton);
+
+      const filterButton = event.target.closest("[data-filter]");
+      if (filterButton) {
+        currentFilter = filterButton.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach(btn => btn.classList.toggle("active", btn === filterButton));
+        applyFilters();
+      }
+    });
+
+    document.getElementById("search").addEventListener("input", applyFilters);
+    document.getElementById("downloadHtml").addEventListener("click", () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "summer-haute-couture-collection.html";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("downloadPdf").addEventListener("click", () => window.print());
+
+    document.getElementById("downloadPng").addEventListener("click", () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200;
+      canvas.height = 1600;
+      const ctx = canvas.getContext("2d");
+      const gradient = ctx.createLinearGradient(0, 0, 1200, 1600);
+      gradient.addColorStop(0, "#fffaf0");
+      gradient.addColorStop(.45, "#ffe3d6");
+      gradient.addColorStop(1, "#f7efe2");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1200, 1600);
+      ctx.fillStyle = "rgba(201, 163, 90, .24)";
+      ctx.fillRect(90, 90, 1020, 1420);
+      ctx.fillStyle = "#fffaf0";
+      ctx.fillRect(110, 110, 980, 1380);
+      ctx.fillStyle = "#c9a35a";
+      ctx.font = "700 34px Georgia, serif";
+      ctx.fillText("SUMMER HAUTE COUTURE", 170, 330);
+      ctx.fillText("COLLECTION", 170, 380);
+      ctx.fillStyle = "#332c27";
+      ctx.font = "700 76px Georgia, serif";
+      wrapCanvasText(ctx, "60 PREMIUM SUMMER DESIGNS", 170, 510, 860, 86);
+      ctx.fillStyle = "#756b61";
+      ctx.font = "34px Segoe UI, Arial";
+      wrapCanvasText(ctx, "동일한 여성 모델을 위한 프리미엄 여름 의상 디자인 컬렉션", 170, 760, 860, 52);
+      ctx.fillStyle = "#8d682a";
+      ctx.font = "700 32px Segoe UI, Arial";
+      ctx.fillText("Medium Full Shot · 9:16 Vertical Editorial", 170, 1030);
+      ctx.fillText("English and Korean Prompts Included", 170, 1090);
+      ctx.fillStyle = "#332c27";
+      ctx.font = "700 42px Georgia, serif";
+      ctx.fillText("Reference Model Lookbook", 170, 1280);
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = "summer-haute-couture-cover.png";
+      a.click();
+    });
+
+    function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(" ");
+      let line = "";
+      words.forEach((word, index) => {
+        const testLine = line + word + " ";
+        if (ctx.measureText(testLine).width > maxWidth && index > 0) {
+          ctx.fillText(line, x, y);
+          line = word + " ";
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      });
+      ctx.fillText(line, x, y);
+    }
+
+    render();
+  </script>
+</body>
+</html>
